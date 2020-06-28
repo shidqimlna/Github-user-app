@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.githubuserapp.view.activity.DetailActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/activity_detail_image_bg"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_alignBottom="@+id/activity_detail_frame_image"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/activity_detail_profile_bg"
+            android:scaleType="centerCrop" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/activity_detail_frame_image"
+            android:paddingTop="80dp">
+
+            <LinearLayout
+                android:id="@+id/activity_detail_container_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:background="@drawable/activity_detail_container_bg"
+                android:elevation="16dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/activity_detail_tv_name"
+                    style="@style/CodeFontBold"
+                    android:layout_marginTop="72dp"
+                    android:gravity="center"
+                    android:text="@string/name"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/activity_detail_tv_username"
+                    style="@style/CodeFontRegular"
+                    android:layout_marginBottom="24dp"
+                    android:gravity="center"
+                    android:text="@string/username"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:id="@+id/activity_detail_ll_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="7"
+                        android:src="@drawable/ic_baseline_business_24" />
+
+                    <TextView
+                        android:id="@+id/activity_detail_tv_company"
+                        style="@style/CodeFontRegular"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/activity_detail_ll_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="7"
+                        android:src="@drawable/ic_baseline_location_on_24" />
+
+                    <TextView
+                        android:id="@+id/activity_detail_tv_location"
+                        style="@style/CodeFontRegular"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/activity_detail_ll_blog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="7"
+                        android:src="@drawable/ic_baseline_link_24" />
+
+                    <TextView
+                        android:id="@+id/activity_detail_tv_blog"
+                        style="@style/CodeFontRegular"
+                        android:layout_weight="1"
+                        android:textColor="#0000FF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/activity_detail_ll_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="7"
+                        android:src="@drawable/ic_baseline_email_24" />
+
+                    <TextView
+                        android:id="@+id/activity_detail_tv_email"
+                        style="@style/CodeFontRegular"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activity_detail_tv_bio"
+                    style="@style/CodeFontRegular"
+                    android:layout_marginTop="32dp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/activity_detail_ll_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activity_detail_tv_follower"
+                        style="@style/CodeFontBold"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32sp" />
+
+                    <TextView
+                        android:id="@+id/activity_detail_tv_following"
+                        style="@style/CodeFontBold"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32sp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    style="@style/CodeFontBold"/>
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/activity_detail_frame_image"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:elevation="8dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/activity_detail_image_profile"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_profile_picture" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/activity_detail_image_divider" />
+
+        </FrameLayout>
+
+        <include
+            android:id="@+id/activity_detail_progressBar_layout"
+            layout="@layout/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="700dp" />
+
+    </RelativeLayout>
+
+</ScrollView>
