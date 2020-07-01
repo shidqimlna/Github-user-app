@@ -40,7 +40,6 @@
                     style="@style/CodeFontBold"
                     android:layout_marginTop="72dp"
                     android:gravity="center"
-                    android:text="@string/name"
                     android:textSize="28sp" />
 
                 <TextView
@@ -48,7 +47,6 @@
                     style="@style/CodeFontRegular"
                     android:layout_marginBottom="24dp"
                     android:gravity="center"
-                    android:text="@string/username"
                     android:textSize="14sp" />
 
                 <LinearLayout
@@ -157,7 +155,6 @@
                         style="@style/CodeFontBold"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="0"
                         android:textSize="32sp" />
 
                     <TextView
@@ -165,17 +162,16 @@
                         style="@style/CodeFontBold"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="0"
                         android:textSize="32sp" />
 
                 </LinearLayout>
 
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabs"
-                    style="@style/CodeFontBold"/>
+                    android:id="@+id/actvity_detail_tabs"
+                    style="@style/CodeFontBold" />
 
                 <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/view_pager"
+                    android:id="@+id/actvity_detail_view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="300dp" />
 
@@ -210,7 +206,13 @@
             android:id="@+id/activity_detail_progressBar_layout"
             layout="@layout/progress_bar"
             android:layout_width="match_parent"
-            android:layout_height="700dp" />
+            android:layout_height="750dp" />
+
+        <include
+            android:id="@+id/activity_detail_warning_layout"
+            layout="@layout/error_warning"
+            android:layout_width="match_parent"
+            android:layout_height="750dp" />
 
     </RelativeLayout>
 

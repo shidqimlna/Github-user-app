@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhiteOpacity"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/progress_bar_container"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_round_warning_24" />
+
+        <TextView
+            style="@style/CodeFontRegular"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@string/error" />
+
+        <TextView
+            android:id="@+id/error_warning_tv"
+            style="@style/CodeFontRegular"
+            android:layout_marginTop="4dp"
+            android:gravity="center" />
+
+        <TextView
+            style="@style/CodeFontRegular"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@string/try_again" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.githubuserapp.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -9,9 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.githubuserapp.ConstantValue.REQUEST_INTERVAL_TIME
+import com.example.githubuserapp.ConstantValue.WARNING_TIME
 import com.example.githubuserapp.R
 import com.example.githubuserapp.adapter.GithubAdapter
 import com.example.githubuserapp.viewmodel.GithubViewModel
+import kotlinx.android.synthetic.main.error_warning.*
 import kotlinx.android.synthetic.main.fragment_following.*
 
 class FollowingFragment : Fragment() {
@@ -19,18 +23,18 @@ class FollowingFragment : Fragment() {
     lateinit var githubViewModel: GithubViewModel
 
     companion object {
-        fun newInstance(username: String?): FollowingFragment {
-            val fragment = FollowingFragment()
-            val bundle = Bundle()
-            bundle.putString("username", username)
-            fragment.arguments = bundle
-            return fragment
+        @JvmStatic
+        fun newInstance(username: String?) = FollowingFragment().apply {
+            arguments = Bundle().apply {
+                putString("username", username)
+            }
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showWarning(false)
         showLoading(true)
 
         githubAdapter = GithubAdapter()
@@ -39,16 +43,6 @@ class FollowingFragment : Fragment() {
         fragment_following_recyclerView.setHasFixedSize(true)
         fragment_following_recyclerView.layoutManager = GridLayoutManager(context, 2)
         fragment_following_recyclerView.adapter = githubAdapter
-
-        githubViewModel =
-            ViewModelProvider(
-                this,
-                ViewModelProvider.AndroidViewModelFactory(activity!!.application)
-            ).get(
-                GithubViewModel::class.java
-            )
-
-        loadData()
     }
 
     override fun onCreateView(
@@ -59,27 +53,73 @@ class FollowingFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_following, container, false)
     }
 
-    private fun loadData() {
-        if (arguments != null) {
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        githubViewModel =
+            ViewModelProvider(
+                this,
+                ViewModelProvider.AndroidViewModelFactory(activity!!.application)
+            ).get(
+                GithubViewModel::class.java
+            )
+        setData()
+    }
+
+    private fun setData(){
+        if (arguments?.getString("username", "") != null) {
             githubViewModel.setUserFollowing(arguments!!.getString("username", ""))
-            githubViewModel.getUsers().observe(this, Observer { resultItems ->
-                if (resultItems != null) {
-                    githubAdapter.setData(resultItems)
-                    showLoading(false)
-                }
-            })
+            loadData()
+        } else {
+            Handler().postDelayed({
+                setData()
+            }, REQUEST_INTERVAL_TIME)
+        }
+    }
+
+    private fun loadData() {
+        if (githubViewModel.getErrorMessage().isNotEmpty()) {
+            if (githubViewModel.getErrorMessage() == "success") {
+                    githubViewModel.setUserFollowing(arguments!!.getString("username", ""))
+                    githubViewModel.getUsers().observe(this, Observer { resultItems ->
+                        if (resultItems != null) {
+                            githubAdapter.setData(resultItems)
+                            showLoading(false)
+                        } else {
+                            Handler().postDelayed({
+                                loadData()
+                            }, REQUEST_INTERVAL_TIME)
+                        }
+                    })
+            } else {
+                showLoading(false)
+                showWarning(true)
+                Handler().postDelayed({
+                    showWarning(false)
+                }, WARNING_TIME)
+            }
         } else {
             Handler().postDelayed({
                 loadData()
-            }, 100)
+            }, REQUEST_INTERVAL_TIME)
         }
     }
+
 
     private fun showLoading(state: Boolean) {
         if (state) {
             fragment_following_progressBar_layout.visibility = View.VISIBLE
         } else {
             fragment_following_progressBar_layout.visibility = View.GONE
+        }
+    }
+
+    private fun showWarning(state: Boolean) {
+        if (state) {
+            fragment_following_warning_layout.visibility = View.VISIBLE
+            error_warning_tv.text = githubViewModel.getErrorMessage()
+        } else {
+            fragment_following_warning_layout.visibility = View.GONE
+            error_warning_tv.text = ""
         }
     }
 }

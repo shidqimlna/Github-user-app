@@ -1,6 +1,5 @@
 package com.example.githubuserapp.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,8 +15,11 @@ class GithubViewModel : ViewModel() {
     private var githubAPI = GithubAPI()
     private var listUsers = MutableLiveData<ArrayList<UsersItem>>()
     private var userDetailItem = UserDetailItem()
+    private var errorMessage = ""
 
     fun setUsers(random: Int) {
+        errorMessage = ""
+
         githubAPI.githubRepository.getUsersAll(random)
             .enqueue(object : Callback<ArrayList<UsersItem>> {
 
@@ -30,19 +32,22 @@ class GithubViewModel : ViewModel() {
                         if (usersResponse != null) {
                             val usersItem: ArrayList<UsersItem> = usersResponse
                             listUsers.postValue(usersItem)
+                            errorMessage = "success"
                         }
                     } catch (e: Exception) {
-                        Log.d("Exception", e.message.toString())
+                        errorMessage = e.message.toString()
                     }
                 }
 
                 override fun onFailure(call: Call<ArrayList<UsersItem>>, t: Throwable) {
-                    Log.d("onFailure", t.message.toString())
+                    errorMessage = t.message.toString()
                 }
             })
     }
 
     fun setUsers(keyword: String) {
+        errorMessage = ""
+
         githubAPI.githubRepository.getUsersSearch(keyword)
             .enqueue(object : Callback<SearchUsersResponse> {
 
@@ -55,19 +60,22 @@ class GithubViewModel : ViewModel() {
                         if (usersResponse != null) {
                             val usersItem: ArrayList<UsersItem> = usersResponse.items
                             listUsers.postValue(usersItem)
+                            errorMessage = "success"
                         }
                     } catch (e: Exception) {
-                        Log.d("Exception", e.message.toString())
+                        errorMessage = e.message.toString()
                     }
                 }
 
                 override fun onFailure(call: Call<SearchUsersResponse>, t: Throwable) {
-                    Log.d("onFailure", t.message.toString())
+                    errorMessage = t.message.toString()
                 }
             })
     }
 
     fun setUserDetail(username: String) {
+        errorMessage = ""
+
         githubAPI.githubRepository.getUserDetail(username)
             .enqueue(object : Callback<UserDetailItem> {
                 override fun onResponse(
@@ -78,19 +86,22 @@ class GithubViewModel : ViewModel() {
                         val usersResponse = response.body()
                         if (usersResponse != null) {
                             userDetailItem = usersResponse
+                            errorMessage = "success"
                         }
                     } catch (e: Exception) {
-                        Log.d("Exception", e.message.toString())
+                        errorMessage = e.message.toString()
                     }
                 }
 
                 override fun onFailure(call: Call<UserDetailItem>, t: Throwable) {
-                    Log.d("onFailure", t.message.toString())
+                    errorMessage = t.message.toString()
                 }
             })
     }
 
     fun setUserFollower(username: String) {
+        errorMessage = ""
+
         githubAPI.githubRepository.getUserFollower(username)
             .enqueue(object : Callback<ArrayList<UsersItem>> {
                 override fun onResponse(
@@ -102,19 +113,22 @@ class GithubViewModel : ViewModel() {
                         if (usersResponse != null) {
                             val usersItem: ArrayList<UsersItem> = usersResponse
                             listUsers.postValue(usersItem)
+                            errorMessage = "success"
                         }
                     } catch (e: Exception) {
-                        Log.d("Exception", e.message.toString())
+                        errorMessage = e.message.toString()
                     }
                 }
 
                 override fun onFailure(call: Call<ArrayList<UsersItem>>, t: Throwable) {
-                    Log.d("onFailure", t.message.toString())
+                    errorMessage = t.message.toString()
                 }
             })
     }
 
     fun setUserFollowing(username: String) {
+        errorMessage = ""
+
         githubAPI.githubRepository.getUserFollowing(username)
             .enqueue(object : Callback<ArrayList<UsersItem>> {
                 override fun onResponse(
@@ -126,14 +140,15 @@ class GithubViewModel : ViewModel() {
                         if (usersResponse != null) {
                             val usersItem: ArrayList<UsersItem> = usersResponse
                             listUsers.postValue(usersItem)
+                            errorMessage = "success"
                         }
                     } catch (e: Exception) {
-                        Log.d("Exception", e.message.toString())
+                        errorMessage = e.message.toString()
                     }
                 }
 
                 override fun onFailure(call: Call<ArrayList<UsersItem>>, t: Throwable) {
-                    Log.d("onFailure", t.message.toString())
+                    errorMessage = t.message.toString()
                 }
             })
     }
@@ -144,5 +159,9 @@ class GithubViewModel : ViewModel() {
 
     fun getUserDetail(): UserDetailItem {
         return userDetailItem
+    }
+
+    fun getErrorMessage(): String {
+        return errorMessage
     }
 }

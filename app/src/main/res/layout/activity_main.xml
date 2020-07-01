@@ -15,10 +15,26 @@
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/activity_main_searchView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/activity_main_searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="7"
+                android:onClick="showPopupMenu"
+                android:src="@drawable/ic_round_settings_24" />
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -38,6 +54,13 @@
     <include
         android:id="@+id/activity_main_progressBar_layout"
         layout="@layout/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@id/activity_main_swipeRefreshLayout" />
+
+    <include
+        android:id="@+id/activity_main_warning_layout"
+        layout="@layout/error_warning"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignTop="@id/activity_main_swipeRefreshLayout" />

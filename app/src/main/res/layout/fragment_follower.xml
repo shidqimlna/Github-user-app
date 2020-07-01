@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
+    android:background="@drawable/fragment_container"
+    android:padding="4dp"
     tools:context=".view.fragment.FollowerFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -14,5 +15,9 @@
     <include
         android:id="@+id/fragment_follower_progressBar_layout"
         layout="@layout/progress_bar" />
+
+    <include
+        android:id="@+id/fragment_follower_warning_layout"
+        layout="@layout/error_warning" />
 
 </FrameLayout>
