@@ -14,20 +14,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.githubuserapp.ConstantValue.ESTIMATED_TOTAL_GITHUB_USER
-import com.example.githubuserapp.ConstantValue.LOADING_TIME
-import com.example.githubuserapp.ConstantValue.REQUEST_INTERVAL_TIME
-import com.example.githubuserapp.ConstantValue.WARNING_TIME
 import com.example.githubuserapp.R
-import com.example.githubuserapp.adapter.GithubAdapter
-import com.example.githubuserapp.viewmodel.GithubViewModel
+import com.example.githubuserapp.adapter.MainAdapter
+import com.example.githubuserapp.utils.ConstantValue.ESTIMATED_TOTAL_GITHUB_USER
+import com.example.githubuserapp.utils.ConstantValue.LOADING_TIME
+import com.example.githubuserapp.utils.ConstantValue.REQUEST_INTERVAL_TIME
+import com.example.githubuserapp.utils.ConstantValue.WARNING_TIME
+import com.example.githubuserapp.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.error_warning.*
 
 
 class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
-    lateinit var githubAdapter: GithubAdapter
-    lateinit var githubViewModel: GithubViewModel
+    private lateinit var mainAdapter: MainAdapter
+    lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,19 +36,24 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
         showWarning(false)
         showLoading(true)
 
+        activity_main_favorite_icon.setOnClickListener {
+            val intent = Intent(this, FavoriteActivity::class.java)
+            startActivity(intent)
+        }
+
         activity_main_swipeRefreshLayout.setOnRefreshListener(this)
         activity_main_swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent)
 
-        githubAdapter = GithubAdapter()
-        githubAdapter.notifyDataSetChanged()
+        mainAdapter = MainAdapter()
+        mainAdapter.notifyDataSetChanged()
 
         activity_main_recyclerView.setHasFixedSize(true)
         activity_main_recyclerView.layoutManager = GridLayoutManager(this, 2)
-        activity_main_recyclerView.adapter = githubAdapter
+        activity_main_recyclerView.adapter = mainAdapter
 
-        githubViewModel =
+        mainViewModel =
             ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(
-                GithubViewModel::class.java
+                MainViewModel::class.java
             )
 
         onRefresh("")
@@ -70,20 +75,20 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
     private fun setData(keyword: String) {
         showLoading(true)
         showWarning(false)
-        if (keyword.isNotEmpty()) githubViewModel.setUsers(keyword)
+        if (keyword.isNotEmpty()) mainViewModel.setUsers(keyword)
         else {
             val random = (1..ESTIMATED_TOTAL_GITHUB_USER).random()
-            githubViewModel.setUsers(random)
+            mainViewModel.setUsers(random)
         }
         loadData()
     }
 
     private fun loadData() {
-        if (githubViewModel.getErrorMessage().isNotEmpty()) {
-            if (githubViewModel.getErrorMessage() == "success") {
-                githubViewModel.getUsers().observe(this, Observer { resultItems ->
+        if (mainViewModel.getErrorMessage().isNotEmpty()) {
+            if (mainViewModel.getErrorMessage() == "success") {
+                mainViewModel.getUsers().observe(this, Observer { resultItems ->
                     if (resultItems != null) {
-                        githubAdapter.setData(resultItems)
+                        mainAdapter.setData(resultItems)
                         showLoading(false)
                     } else {
                         Handler().postDelayed({
@@ -145,7 +150,7 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
     private fun showWarning(state: Boolean) {
         if (state) {
             activity_main_warning_layout.visibility = View.VISIBLE
-            error_warning_tv.text = githubViewModel.getErrorMessage()
+            error_warning_tv.text = mainViewModel.getErrorMessage()
         } else {
             activity_main_warning_layout.visibility = View.GONE
             error_warning_tv.text = ""

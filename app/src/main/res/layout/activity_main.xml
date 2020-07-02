@@ -27,10 +27,19 @@
                 android:layout_weight="1" />
 
             <ImageView
+                android:id="@+id/activity_main_favorite_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="7"
+                android:layout_weight="4"
+                android:src="@drawable/ic_round_favorite_24_black" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="4"
                 android:onClick="showPopupMenu"
                 android:src="@drawable/ic_round_settings_24" />
 

@@ -39,10 +39,10 @@
                 android:layout_height="120dp"
                 android:background="@drawable/item_user_container_bg"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"  />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/item_user_image"

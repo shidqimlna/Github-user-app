@@ -2,20 +2,19 @@ package com.example.githubuserapp.network
 
 import com.example.githubuserapp.BuildConfig
 import com.example.githubuserapp.model.SearchUsersResponse
-import com.example.githubuserapp.model.UserDetailItem
-import com.example.githubuserapp.model.UsersItem
+import com.example.githubuserapp.model.UserItem
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface GithubRepository {
+interface MainRepository {
     @GET("users?")
     @Headers("Authorization: Token ${BuildConfig.API_KEY}")
     fun getUsersAll(
         @Query("since") random: Int
-    ): Call<ArrayList<UsersItem>>
+    ): Call<ArrayList<UserItem>>
 
     @GET("search/users?")
     @Headers("Authorization: Token ${BuildConfig.API_KEY}")
@@ -27,18 +26,18 @@ interface GithubRepository {
     @Headers("Authorization: Token ${BuildConfig.API_KEY}")
     fun getUserDetail(
         @Path("username") username: String
-    ): Call<UserDetailItem>
+    ): Call<UserItem>
 
     @GET("users/{username}/followers")
     @Headers("Authorization: Token ${BuildConfig.API_KEY}")
     fun getUserFollower(
         @Path("username") username: String
-    ): Call<ArrayList<UsersItem>>
+    ): Call<ArrayList<UserItem>>
 
     @GET("users/{username}/following")
     @Headers("Authorization: Token ${BuildConfig.API_KEY}")
     fun getUserFollowing(
         @Path("username") username: String
-    ): Call<ArrayList<UsersItem>>
+    ): Call<ArrayList<UserItem>>
 
 }
