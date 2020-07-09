@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".view.activity.SettingActivity">
+
+    <RelativeLayout
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_below="@+id/activity_setting_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/activity_setting_button_off"
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/activity_setting_button_bg"
+                android:src="@drawable/ic_baseline_power_settings_off_24" />
+
+            <ImageButton
+                android:id="@+id/activity_setting_button_on"
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/activity_setting_button_bg"
+                android:src="@drawable/ic_baseline_power_settings_on_24" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/activity_setting_tv"
+            style="@style/CodeFontBold"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/alarm" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -20,12 +20,10 @@ import kotlinx.android.synthetic.main.error_warning.*
 
 class DetailActivity : AppCompatActivity() {
     lateinit var mainViewModel: MainViewModel
-    private val appDatabase = AppDatabase.initDB(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-
         showWarning(false)
         showLoading(true)
 
@@ -41,15 +39,16 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setData(user: UserItem) {
+        val appDatabase = AppDatabase.initDB(this)
         if (appDatabase.userDAO().exists(user.id!!)) {
-            activity_detail_favorite_icon.setImageResource(R.drawable.ic_round_favorite_24_red)
+            activity_detail_fab_favorite.setImageResource(R.drawable.ic_round_favorite_24_red)
             loadData(user)
-            activity_detail_favorite_icon.setOnClickListener {
+            activity_detail_fab_favorite.setOnClickListener {
                 appDatabase.userDAO().delete(user)
                 setData(user)
             }
         } else {
-            activity_detail_favorite_icon.setImageResource(R.drawable.ic_round_favorite_24_black)
+            activity_detail_fab_favorite.setImageResource(R.drawable.ic_round_favorite_24_black)
             mainViewModel =
                 ViewModelProvider(
                     this,
@@ -58,16 +57,16 @@ class DetailActivity : AppCompatActivity() {
                     MainViewModel::class.java
                 )
             mainViewModel.setUserDetail(user.login!!)
-            getData()
+            getData(appDatabase)
         }
     }
 
-    private fun getData() {
+    private fun getData(appDatabase: AppDatabase) {
         if (mainViewModel.getErrorMessage().isNotEmpty()) {
             if (mainViewModel.getErrorMessage() == "success") {
                 if (mainViewModel.getUserDetail().avatar_url != null) {
                     val user: UserItem = mainViewModel.getUserDetail()
-                    activity_detail_favorite_icon.setOnClickListener {
+                    activity_detail_fab_favorite.setOnClickListener {
                         appDatabase.userDAO().insert(user)
                         setData(user)
                         //activity_detail_favorite_icon.setImageResource(R.drawable.ic_round_favorite_24_red)
@@ -75,7 +74,7 @@ class DetailActivity : AppCompatActivity() {
                     loadData(user)
                 } else {
                     Handler().postDelayed({
-                        getData()
+                        getData(appDatabase)
                     }, REQUEST_INTERVAL_TIME)
                 }
             } else {
@@ -87,7 +86,7 @@ class DetailActivity : AppCompatActivity() {
             }
         } else {
             Handler().postDelayed({
-                getData()
+                getData(appDatabase)
             }, REQUEST_INTERVAL_TIME)
         }
     }

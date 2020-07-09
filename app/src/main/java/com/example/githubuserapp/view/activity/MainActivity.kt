@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
             val intent = Intent(this, FavoriteActivity::class.java)
             startActivity(intent)
         }
+        activity_main_alarm_icon.setOnClickListener {
+            val intent = Intent(this, SettingActivity::class.java)
+            startActivity(intent)
+        }
 
         activity_main_swipeRefreshLayout.setOnRefreshListener(this)
         activity_main_swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent)

@@ -49,7 +49,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:background="@drawable/item_user_photo_bg"
+                android:background="@drawable/default_round_profile_picture"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toTopOf="@+id/item_user_tv_username"
                 app:layout_constraintEnd_toEndOf="parent"
