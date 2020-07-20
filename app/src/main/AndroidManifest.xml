@@ -20,6 +20,16 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver android:name=".view.widget.MainWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/main_widget_info" />
+        </receiver>
+
         <activity android:name=".view.activity.SettingActivity" />
         <activity android:name=".view.activity.FavoriteActivity" />
         <activity android:name=".view.activity.DetailActivity" />
@@ -37,12 +47,25 @@
             android:exported="true" />
 
         <provider
-            android:name=".provider.GithubUsersProvider"
+            android:name=".data.provider.MainProvider"
             android:authorities="com.example.githubuserapp"
             android:enabled="true"
             android:exported="true"
             android:readPermission="com.example.githubuserapp.READ_DATABASE"
-            android:writePermission="com.example.githubuserapp.WRITE_DATABASE"/>
+            android:writePermission="com.example.githubuserapp.WRITE_DATABASE" />
+
+        <receiver android:name=".view.widget.MainWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/main_widget_info" />
+        </receiver>
+        <service
+            android:name=".view.widget.MainWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
     </application>
 

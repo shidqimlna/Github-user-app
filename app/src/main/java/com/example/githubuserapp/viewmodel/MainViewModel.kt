@@ -3,9 +3,9 @@ package com.example.githubuserapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.githubuserapp.data.network.MainAPI
 import com.example.githubuserapp.model.SearchUsersResponse
 import com.example.githubuserapp.model.UserItem
-import com.example.githubuserapp.network.MainAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +19,7 @@ class MainViewModel : ViewModel() {
     fun setUsers(random: Int) {
         errorMessage = ""
 
-        mainAPI.mainRepository.getUsersAll(random)
+        mainAPI.mainApiInterface.getUsersAll(random)
             .enqueue(object : Callback<ArrayList<UserItem>> {
 
                 override fun onResponse(
@@ -47,7 +47,7 @@ class MainViewModel : ViewModel() {
     fun setUsers(keyword: String) {
         errorMessage = ""
 
-        mainAPI.mainRepository.getUsersSearch(keyword)
+        mainAPI.mainApiInterface.getUsersSearch(keyword)
             .enqueue(object : Callback<SearchUsersResponse> {
 
                 override fun onResponse(
@@ -75,7 +75,7 @@ class MainViewModel : ViewModel() {
     fun setUserDetail(username: String) {
         errorMessage = ""
 
-        mainAPI.mainRepository.getUserDetail(username)
+        mainAPI.mainApiInterface.getUserDetail(username)
             .enqueue(object : Callback<UserItem> {
                 override fun onResponse(
                     call: Call<UserItem>,
@@ -101,7 +101,7 @@ class MainViewModel : ViewModel() {
     fun setUserFollower(username: String) {
         errorMessage = ""
 
-        mainAPI.mainRepository.getUserFollower(username)
+        mainAPI.mainApiInterface.getUserFollower(username)
             .enqueue(object : Callback<ArrayList<UserItem>> {
                 override fun onResponse(
                     call: Call<ArrayList<UserItem>>,
@@ -128,7 +128,7 @@ class MainViewModel : ViewModel() {
     fun setUserFollowing(username: String) {
         errorMessage = ""
 
-        mainAPI.mainRepository.getUserFollowing(username)
+        mainAPI.mainApiInterface.getUserFollowing(username)
             .enqueue(object : Callback<ArrayList<UserItem>> {
                 override fun onResponse(
                     call: Call<ArrayList<UserItem>>,

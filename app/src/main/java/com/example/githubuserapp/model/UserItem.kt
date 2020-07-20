@@ -9,8 +9,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "users_favorite")
 data class UserItem(
-    @PrimaryKey val id: Int? = null,
-    @ColumnInfo(name = "login") val login: String? = null,
+    @PrimaryKey
+    @ColumnInfo(index = true, name = "id") var id: Int? = null,
+    @ColumnInfo(name = "login") var login: String? = null,
     @ColumnInfo(name = "avatar_url") val avatar_url: String? = null,
     @ColumnInfo(name = "name") val name: String? = null,
     @ColumnInfo(name = "company") val company: String? = null,
@@ -21,3 +22,4 @@ data class UserItem(
     @ColumnInfo(name = "followers") val followers: String? = null,
     @ColumnInfo(name = "following") val following: String? = null
 ) : Parcelable
+

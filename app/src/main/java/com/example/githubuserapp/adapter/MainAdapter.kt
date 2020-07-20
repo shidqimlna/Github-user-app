@@ -15,6 +15,13 @@ import kotlin.random.Random
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.ListViewHolder>() {
 
+    /*var listUsers  = ArrayList<UserItem>()
+        set(listUsers) {
+            this.listUsers.clear()
+            this.listUsers.addAll(listUsers)
+            notifyDataSetChanged()
+        }*/
+
     private val listUsers = ArrayList<UserItem>()
 
     fun setData(items: Collection<UserItem>) {

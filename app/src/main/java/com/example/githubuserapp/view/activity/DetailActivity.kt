@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.githubuserapp.R
 import com.example.githubuserapp.adapter.SectionsPagerAdapter
-import com.example.githubuserapp.database.AppDatabase
+import com.example.githubuserapp.data.database.MainDatabase
 import com.example.githubuserapp.model.UserItem
 import com.example.githubuserapp.utils.ConstantValue.REQUEST_INTERVAL_TIME
 import com.example.githubuserapp.utils.ConstantValue.WARNING_TIME
@@ -30,7 +30,7 @@ class DetailActivity : AppCompatActivity() {
         val user = intent.getParcelableExtra<UserItem>("user")
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        sectionsPagerAdapter.setUsername(user.login!!)
+        sectionsPagerAdapter.setUsername(user?.login!!)
         actvity_detail_view_pager.adapter = sectionsPagerAdapter
         actvity_detail_tabs.setupWithViewPager(actvity_detail_view_pager)
         supportActionBar?.elevation = 0f
@@ -39,7 +39,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setData(user: UserItem) {
-        val appDatabase = AppDatabase.initDB(this)
+        val appDatabase = MainDatabase.initDB(this)
         if (appDatabase.userDAO().exists(user.id!!)) {
             activity_detail_fab_favorite.setImageResource(R.drawable.ic_round_favorite_24_red)
             loadData(user)
@@ -61,20 +61,19 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun getData(appDatabase: AppDatabase) {
+    private fun getData(mainDatabase: MainDatabase) {
         if (mainViewModel.getErrorMessage().isNotEmpty()) {
             if (mainViewModel.getErrorMessage() == "success") {
                 if (mainViewModel.getUserDetail().avatar_url != null) {
                     val user: UserItem = mainViewModel.getUserDetail()
                     activity_detail_fab_favorite.setOnClickListener {
-                        appDatabase.userDAO().insert(user)
+                        mainDatabase.userDAO().insert(user)
                         setData(user)
-                        //activity_detail_favorite_icon.setImageResource(R.drawable.ic_round_favorite_24_red)
                     }
                     loadData(user)
                 } else {
                     Handler().postDelayed({
-                        getData(appDatabase)
+                        getData(mainDatabase)
                     }, REQUEST_INTERVAL_TIME)
                 }
             } else {
@@ -86,7 +85,7 @@ class DetailActivity : AppCompatActivity() {
             }
         } else {
             Handler().postDelayed({
-                getData(appDatabase)
+                getData(mainDatabase)
             }, REQUEST_INTERVAL_TIME)
         }
     }

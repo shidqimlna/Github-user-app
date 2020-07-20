@@ -92,6 +92,7 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
             if (mainViewModel.getErrorMessage() == "success") {
                 mainViewModel.getUsers().observe(this, Observer { resultItems ->
                     if (resultItems != null) {
+                        //mainAdapter.listUsers = resultItems
                         mainAdapter.setData(resultItems)
                         showLoading(false)
                     } else {

@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">FavoriteApp</string>
+    <string name="app_name">FavGUser</string>
+    <string name="follower">Follower</string>
+    <string name="following">Following</string>
 </resources>

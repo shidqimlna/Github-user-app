@@ -12,24 +12,24 @@
         android:layout_centerInParent="true">
 
         <LinearLayout
-            android:layout_below="@+id/activity_setting_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_setting_tv"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/activity_setting_button_off"
-                android:layout_margin="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:background="@drawable/activity_setting_button_bg"
                 android:src="@drawable/ic_baseline_power_settings_off_24" />
 
             <ImageButton
                 android:id="@+id/activity_setting_button_on"
-                android:layout_margin="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:background="@drawable/activity_setting_button_bg"
                 android:src="@drawable/ic_baseline_power_settings_on_24" />
 
