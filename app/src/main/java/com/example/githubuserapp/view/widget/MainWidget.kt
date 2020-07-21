@@ -9,14 +9,12 @@ import android.net.Uri
 import android.widget.RemoteViews
 import android.widget.Toast
 import com.example.githubuserapp.R
+import com.example.githubuserapp.utils.ConstantValue.EXTRA_ITEM
+import com.example.githubuserapp.utils.ConstantValue.TOAST_ACTION
 
 class MainWidget : AppWidgetProvider() {
 
     companion object {
-
-        private val TOAST_ACTION = "com.example.movieapplication.TOAST_ACTION"
-        val EXTRA_ITEM = "com.example.movieapplication.EXTRA_ITEM"
-
         internal fun updateAppWidget(
             context: Context, appWidgetManager: AppWidgetManager,
             appWidgetId: Int
@@ -51,7 +49,7 @@ class MainWidget : AppWidgetProvider() {
         if (intent?.action != null) {
             if (intent.action.equals(TOAST_ACTION)) {
                 val index = intent.getIntExtra(EXTRA_ITEM, 0)
-                Toast.makeText(context, "Touched view " + index, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Touched view $index", Toast.LENGTH_SHORT).show()
             }
         }
     }

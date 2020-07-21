@@ -18,7 +18,7 @@ class MainProvider : ContentProvider() {
     private lateinit var userDao: UserFavoriteDAO
 
     override fun onCreate(): Boolean {
-        userDao = MainDatabase.initDB(context!!).userDAO()
+        context?.let { userDao = MainDatabase.initDB(it).userDAO() }
         uriMatcher.addURI(authority, "users_favorite", userId)
         return true
     }
@@ -27,11 +27,7 @@ class MainProvider : ContentProvider() {
         context?.let {
             when (userId) {
                 uriMatcher.match(uri) -> {
-                    val id = userDao.insert(
-                        fromContentValues(
-                            values!!
-                        )
-                    )
+                    val id = userDao.insert(fromContentValues(values))
                     it.contentResolver
                         .notifyChange(uri, null)
                     return@let ContentUris.withAppendedId(uri, id)
@@ -47,7 +43,6 @@ class MainProvider : ContentProvider() {
         selectionArgs: Array<String>?,
         sortOrder: String?
     ): Cursor? {
-
         val cursor: Cursor?
         when (uriMatcher.match(uri)) {
             1 -> cursor = userDao.getAllCursor()

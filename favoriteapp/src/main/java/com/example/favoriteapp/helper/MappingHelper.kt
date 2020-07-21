@@ -45,17 +45,4 @@ object MappingHelper {
         }
         return usersList
     }
-/*
-    fun mapCursorToObject(notesCursor: Cursor?): UserItem {
-        var userItem = UserItem()
-        notesCursor?.apply {
-            moveToFirst()
-            val id = getInt(getColumnIndexOrThrow(DatabaseContract.NoteColumns._ID))
-            val title = getString(getColumnIndexOrThrow(DatabaseContract.NoteColumns.TITLE))
-            val description = getString(getColumnIndexOrThrow(DatabaseContract.NoteColumns.DESCRIPTION))
-            val date = getString(getColumnIndexOrThrow(DatabaseContract.NoteColumns.DATE))
-            userItem = UserItem(id, title, description, date)
-        }
-        return userItem
-    }*/
 }

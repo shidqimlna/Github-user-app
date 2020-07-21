@@ -208,7 +208,7 @@
                 android:layout_height="155dp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                android:src="@drawable/default_profile_picture" />
+                android:background="@drawable/default_round_profile_picture" />
 
             <ImageView
                 android:layout_width="match_parent"

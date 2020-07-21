@@ -14,7 +14,7 @@ class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private var username: String? = null
 
-    fun setUsername(username: String) {
+    fun setUsername(username: String?) {
         this.username = username
     }
 

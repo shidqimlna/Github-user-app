@@ -22,8 +22,8 @@ class DetailActivity : AppCompatActivity() {
         loadData(user)
     }
 
-    private fun loadData(user: UserItem) {
-        user.let {
+    private fun loadData(user: UserItem?) {
+        user?.let {
             Picasso.get().load(it.avatar_url).into(activity_detail_image_profile)
             activity_detail_tv_name.text = it.name
             activity_detail_tv_username.text = "@${it.login}"
@@ -35,13 +35,15 @@ class DetailActivity : AppCompatActivity() {
                 activity_detail_ll_company.visibility = View.VISIBLE
                 activity_detail_tv_company.text = it.company
             }
-            if (it.blog!!.isNotEmpty()) {
-                activity_detail_ll_blog.visibility = View.VISIBLE
-                activity_detail_tv_blog.text = it.blog
-                activity_detail_ll_blog.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW)
-                    intent.data = Uri.parse(user.blog)
-                    startActivity(intent)
+            if (it.blog != null){
+                if (it.blog.isNotEmpty()) {
+                    activity_detail_ll_blog.visibility = View.VISIBLE
+                    activity_detail_tv_blog.text = it.blog
+                    activity_detail_ll_blog.setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW)
+                        intent.data = Uri.parse(user.blog)
+                        startActivity(intent)
+                    }
                 }
             }
             if (it.email != null) {

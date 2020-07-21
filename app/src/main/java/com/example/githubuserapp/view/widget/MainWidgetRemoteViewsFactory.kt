@@ -9,6 +9,7 @@ import android.widget.RemoteViewsService
 import com.example.githubuserapp.R
 import com.example.githubuserapp.data.database.MainDatabase
 import com.example.githubuserapp.model.UserItem
+import com.example.githubuserapp.utils.ConstantValue.EXTRA_ITEM
 import com.example.githubuserapp.utils.DownloadImageTask
 
 class MainWidgetRemoteViewsFactory(val context: Context) :
@@ -43,7 +44,7 @@ class MainWidgetRemoteViewsFactory(val context: Context) :
         remoteViews.setImageViewBitmap(R.id.ivItemWidget, items[position])
 
         val bundle = Bundle()
-        bundle.putInt(MainWidget.EXTRA_ITEM, position)
+        bundle.putInt(EXTRA_ITEM, position)
 
         val fillIntent = Intent()
         fillIntent.putExtras(bundle)

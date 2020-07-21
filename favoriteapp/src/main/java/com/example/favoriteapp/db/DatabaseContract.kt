@@ -11,7 +11,7 @@ object DatabaseContract {
     class NoteColumns : BaseColumns {
 
         companion object {
-            const val TABLE_NAME = "users_favorite"
+            private const val TABLE_NAME = "users_favorite"
             const val ID = "ID"
             const val LOGIN = "login"
             const val AVATAR = "avatar_url"

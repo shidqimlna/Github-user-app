@@ -19,8 +19,8 @@ class MainViewModel : ViewModel() {
     fun setUsers(random: Int) {
         errorMessage = ""
 
-        mainAPI.mainApiInterface.getUsersAll(random)
-            .enqueue(object : Callback<ArrayList<UserItem>> {
+        mainAPI.mainApiInterface?.getUsersAll(random)
+            ?.enqueue(object : Callback<ArrayList<UserItem>> {
 
                 override fun onResponse(
                     call: Call<ArrayList<UserItem>>,
@@ -47,8 +47,8 @@ class MainViewModel : ViewModel() {
     fun setUsers(keyword: String) {
         errorMessage = ""
 
-        mainAPI.mainApiInterface.getUsersSearch(keyword)
-            .enqueue(object : Callback<SearchUsersResponse> {
+        mainAPI.mainApiInterface?.getUsersSearch(keyword)
+            ?.enqueue(object : Callback<SearchUsersResponse> {
 
                 override fun onResponse(
                     call: Call<SearchUsersResponse>,
@@ -72,11 +72,11 @@ class MainViewModel : ViewModel() {
             })
     }
 
-    fun setUserDetail(username: String) {
+    fun setUserDetail(username: String?) {
         errorMessage = ""
 
-        mainAPI.mainApiInterface.getUserDetail(username)
-            .enqueue(object : Callback<UserItem> {
+        mainAPI.mainApiInterface?.getUserDetail(username)
+            ?.enqueue(object : Callback<UserItem> {
                 override fun onResponse(
                     call: Call<UserItem>,
                     response: Response<UserItem>
@@ -101,8 +101,8 @@ class MainViewModel : ViewModel() {
     fun setUserFollower(username: String) {
         errorMessage = ""
 
-        mainAPI.mainApiInterface.getUserFollower(username)
-            .enqueue(object : Callback<ArrayList<UserItem>> {
+        mainAPI.mainApiInterface?.getUserFollower(username)
+            ?.enqueue(object : Callback<ArrayList<UserItem>> {
                 override fun onResponse(
                     call: Call<ArrayList<UserItem>>,
                     response: Response<ArrayList<UserItem>>
@@ -128,8 +128,8 @@ class MainViewModel : ViewModel() {
     fun setUserFollowing(username: String) {
         errorMessage = ""
 
-        mainAPI.mainApiInterface.getUserFollowing(username)
-            .enqueue(object : Callback<ArrayList<UserItem>> {
+        mainAPI.mainApiInterface?.getUserFollowing(username)
+            ?.enqueue(object : Callback<ArrayList<UserItem>> {
                 override fun onResponse(
                     call: Call<ArrayList<UserItem>>,
                     response: Response<ArrayList<UserItem>>

@@ -19,8 +19,8 @@ import kotlinx.android.synthetic.main.error_warning.*
 import kotlinx.android.synthetic.main.fragment_follower.*
 
 class FollowerFragment : Fragment() {
-    lateinit var mainAdapter: MainAdapter
-    lateinit var mainViewModel: MainViewModel
+    private lateinit var mainAdapter: MainAdapter
+    private lateinit var mainViewModel: MainViewModel
 
     companion object {
         @JvmStatic
@@ -67,8 +67,10 @@ class FollowerFragment : Fragment() {
 
     private fun setData() {
         if (arguments?.getString("username", "") != null) {
-            mainViewModel.setUserFollower(arguments!!.getString("username", ""))
-            loadData()
+            arguments?.let {
+                mainViewModel.setUserFollower(it.getString("username", ""))
+                loadData()
+            }
         } else {
             Handler().postDelayed({
                 setData()
@@ -79,7 +81,6 @@ class FollowerFragment : Fragment() {
     private fun loadData() {
         if (mainViewModel.getErrorMessage().isNotEmpty()) {
             if (mainViewModel.getErrorMessage() == "success") {
-                mainViewModel.setUserFollower(arguments!!.getString("username", ""))
                 mainViewModel.getUsers().observe(this, Observer { resultItems ->
                     if (resultItems != null) {
                         mainAdapter.setData(resultItems)

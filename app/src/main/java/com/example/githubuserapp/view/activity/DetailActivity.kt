@@ -30,7 +30,7 @@ class DetailActivity : AppCompatActivity() {
         val user = intent.getParcelableExtra<UserItem>("user")
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        sectionsPagerAdapter.setUsername(user?.login!!)
+        sectionsPagerAdapter.setUsername(user?.login)
         actvity_detail_view_pager.adapter = sectionsPagerAdapter
         actvity_detail_tabs.setupWithViewPager(actvity_detail_view_pager)
         supportActionBar?.elevation = 0f
@@ -38,9 +38,9 @@ class DetailActivity : AppCompatActivity() {
         setData(user)
     }
 
-    private fun setData(user: UserItem) {
+    private fun setData(user: UserItem?) {
         val appDatabase = MainDatabase.initDB(this)
-        if (appDatabase.userDAO().exists(user.id!!)) {
+        if (appDatabase.userDAO().exists(user?.id)) {
             activity_detail_fab_favorite.setImageResource(R.drawable.ic_round_favorite_24_red)
             loadData(user)
             activity_detail_fab_favorite.setOnClickListener {
@@ -56,7 +56,7 @@ class DetailActivity : AppCompatActivity() {
                 ).get(
                     MainViewModel::class.java
                 )
-            mainViewModel.setUserDetail(user.login!!)
+            mainViewModel.setUserDetail(user?.login)
             getData(appDatabase)
         }
     }
@@ -90,8 +90,8 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadData(user: UserItem) {
-        user.let {
+    private fun loadData(user: UserItem?) {
+        user?.let {
             Picasso.get().load(it.avatar_url).into(activity_detail_image_profile)
             activity_detail_tv_name.text = it.name
             activity_detail_tv_username.text = "@${it.login}"
@@ -103,13 +103,15 @@ class DetailActivity : AppCompatActivity() {
                 activity_detail_ll_company.visibility = View.VISIBLE
                 activity_detail_tv_company.text = it.company
             }
-            if (it.blog!!.isNotEmpty()) {
-                activity_detail_ll_blog.visibility = View.VISIBLE
-                activity_detail_tv_blog.text = it.blog
-                activity_detail_ll_blog.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW)
-                    intent.data = Uri.parse(user.blog)
-                    startActivity(intent)
+            if (it.blog != null) {
+                if (it.blog.isNotEmpty()) {
+                    activity_detail_ll_blog.visibility = View.VISIBLE
+                    activity_detail_tv_blog.text = it.blog
+                    activity_detail_ll_blog.setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW)
+                        intent.data = Uri.parse(user.blog)
+                        startActivity(intent)
+                    }
                 }
             }
             if (it.email != null) {

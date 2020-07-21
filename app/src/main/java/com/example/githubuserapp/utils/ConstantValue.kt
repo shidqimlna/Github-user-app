@@ -9,4 +9,6 @@ object ConstantValue {
     const val TYPE_REPEATING = "RepeatingAlarm"
     const val EXTRA_MESSAGE = "Back to app"
     const val ID_REPEATING = 101
+    const val TOAST_ACTION = "com.example.movieapplication.TOAST_ACTION"
+    const val EXTRA_ITEM = "com.example.movieapplication.EXTRA_ITEM"
 }

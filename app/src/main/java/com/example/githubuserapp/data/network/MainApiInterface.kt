@@ -20,25 +20,25 @@ interface MainApiInterface {
     @Headers("Authorization: Token ${BuildConfig.API_KEY}")
     @GET("search/users?")
     fun getUsersSearch(
-        @Query("q") searchKey: String
+        @Query("q") searchKey: String?
     ): Call<SearchUsersResponse>
 
     @Headers("Authorization: Token ${BuildConfig.API_KEY}")
     @GET("users/{username}")
     fun getUserDetail(
-        @Path("username") username: String
+        @Path("username") username: String?
     ): Call<UserItem>
 
     @Headers("Authorization: Token ${BuildConfig.API_KEY}")
     @GET("users/{username}/followers")
     fun getUserFollower(
-        @Path("username") username: String
+        @Path("username") username: String?
     ): Call<ArrayList<UserItem>>
 
     @Headers("Authorization: Token ${BuildConfig.API_KEY}")
     @GET("users/{username}/following")
     fun getUserFollowing(
-        @Path("username") username: String
+        @Path("username") username: String?
     ): Call<ArrayList<UserItem>>
 
 }

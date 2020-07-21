@@ -13,7 +13,7 @@ interface UserFavoriteDAO {
     fun getAll(): List<UserItem>
 
     @Query("SELECT EXISTS (SELECT 1 FROM users_favorite WHERE id = :id)")
-    fun exists(id: Int): Boolean
+    fun exists(id: Int?): Boolean
 
     @Query("SELECT * FROM users_favorite")
     fun getAllCursor(): Cursor
@@ -22,6 +22,6 @@ interface UserFavoriteDAO {
     fun insert(userFavorites: UserItem): Long
 
     @Delete
-    fun delete(userFavorite: UserItem)
+    fun delete(userFavorite: UserItem?)
 
 }

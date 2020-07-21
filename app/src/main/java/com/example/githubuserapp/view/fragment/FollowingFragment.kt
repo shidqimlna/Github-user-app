@@ -67,8 +67,10 @@ class FollowingFragment : Fragment() {
 
     private fun setData() {
         if (arguments?.getString("username", "") != null) {
-            mainViewModel.setUserFollowing(arguments!!.getString("username", ""))
-            loadData()
+            arguments?.let {
+                mainViewModel.setUserFollowing(it.getString("username", ""))
+                loadData()
+            }
         } else {
             Handler().postDelayed({
                 setData()
@@ -79,7 +81,6 @@ class FollowingFragment : Fragment() {
     private fun loadData() {
         if (mainViewModel.getErrorMessage().isNotEmpty()) {
             if (mainViewModel.getErrorMessage() == "success") {
-                mainViewModel.setUserFollowing(arguments!!.getString("username", ""))
                 mainViewModel.getUsers().observe(this, Observer { resultItems ->
                     if (resultItems != null) {
                         mainAdapter.setData(resultItems)
