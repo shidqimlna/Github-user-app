@@ -7,4 +7,7 @@
     <string name="try_again">Silahkan coba lagi</string>
     <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
     <string name="alarm">Alarm</string>
+    <string name="your_favorite_guser">GUser Favoritmu</string>
+    <string name="no_data">Tidak ada data</string>
+    <string name="favorite_user">GUser Favorit</string>
 </resources>

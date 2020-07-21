@@ -13,15 +13,12 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.example.githubuserapp.R
+import com.example.githubuserapp.utils.ConstantValue.EXTRA_MESSAGE
+import com.example.githubuserapp.utils.ConstantValue.TYPE_REPEATING
+import com.example.githubuserapp.utils.ConstantValue.ID_REPEATING
 import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
-
-    companion object {
-        const val TYPE_REPEATING = "RepeatingAlarm"
-        const val EXTRA_MESSAGE = "Back to app"
-        private const val ID_REPEATING = 101
-    }
 
     override fun onReceive(context: Context, intent: Intent) {
         showAlarmNotification(context)

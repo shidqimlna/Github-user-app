@@ -18,12 +18,6 @@ interface UserFavoriteDAO {
     @Query("SELECT * FROM users_favorite")
     fun getAllCursor(): Cursor
 
-    /*@Delete
-    fun deleteById(id: Long) : Int*/
-
-    /*@Insert
-    fun insertLong(userFavorites: UserItem) */
-
     @Insert
     fun insert(userFavorites: UserItem): Long
 

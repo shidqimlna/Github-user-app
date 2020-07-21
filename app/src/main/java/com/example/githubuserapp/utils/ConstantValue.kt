@@ -6,4 +6,7 @@ object ConstantValue {
     const val LOADING_TIME: Long = 1000
     const val ESTIMATED_TOTAL_GITHUB_USER = 60000000
     const val BASE_URL = "http://api.github.com/"
+    const val TYPE_REPEATING = "RepeatingAlarm"
+    const val EXTRA_MESSAGE = "Back to app"
+    const val ID_REPEATING = 101
 }

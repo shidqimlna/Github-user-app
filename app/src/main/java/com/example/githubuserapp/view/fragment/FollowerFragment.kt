@@ -82,7 +82,6 @@ class FollowerFragment : Fragment() {
                 mainViewModel.setUserFollower(arguments!!.getString("username", ""))
                 mainViewModel.getUsers().observe(this, Observer { resultItems ->
                     if (resultItems != null) {
-                        //mainAdapter.listUsers = resultItems
                         mainAdapter.setData(resultItems)
                         showLoading(false)
                     } else {

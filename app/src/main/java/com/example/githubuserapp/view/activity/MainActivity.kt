@@ -24,7 +24,6 @@ import com.example.githubuserapp.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.error_warning.*
 
-
 class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var mainAdapter: MainAdapter
     lateinit var mainViewModel: MainViewModel
@@ -92,7 +91,6 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
             if (mainViewModel.getErrorMessage() == "success") {
                 mainViewModel.getUsers().observe(this, Observer { resultItems ->
                     if (resultItems != null) {
-                        //mainAdapter.listUsers = resultItems
                         mainAdapter.setData(resultItems)
                         showLoading(false)
                     } else {
