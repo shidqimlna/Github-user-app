@@ -16,6 +16,7 @@ import com.example.githubuserapp.R
 import com.example.githubuserapp.utils.ConstantValue.EXTRA_MESSAGE
 import com.example.githubuserapp.utils.ConstantValue.TYPE_REPEATING
 import com.example.githubuserapp.utils.ConstantValue.ID_REPEATING
+import com.example.githubuserapp.view.activity.MainActivity
 import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
@@ -36,6 +37,7 @@ class AlarmReceiver : BroadcastReceiver() {
             .setSmallIcon(R.drawable.ic_access_time_black)
             .setContentTitle(TYPE_REPEATING)
             .setContentText(EXTRA_MESSAGE)
+            .setContentIntent(PendingIntent.getActivity(context, ID_REPEATING, Intent(context, MainActivity::class.java), 0))
             .setColor(ContextCompat.getColor(context, android.R.color.transparent))
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
             .setSound(alarmSound)
