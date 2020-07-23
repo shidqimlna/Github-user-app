@@ -1,5 +1,5 @@
 # GUser
-Simple app for dicoding submission fundamental android
+Simple app for Dicoding's fundamental android submission 
 
 ## Features
 * MVVM Architech
