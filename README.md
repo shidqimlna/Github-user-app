@@ -6,6 +6,7 @@ Simple app for Dicoding's fundamental android submission
 * CardView
 * CircleImageView
 * Content Provider
+* Github API
 * Kotlin
 * Live Data
 * MVVM Architech
