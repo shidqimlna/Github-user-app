@@ -13,7 +13,7 @@ Simple app for dicoding submission fundamental android
 * Picasso
 * Retrofit
 
-### Download [main app](https://github.com/shidqi75/Github-user-app/blob/master/apk/GUser.apk) and [consumer app](https://github.com/shidqi75/Github-user-app/blob/master/apk/FavGUser.apk) (consumer application to test the Content Provider in providing data)
+### Download [main app](https://github.com/shidqi75/Github-user-app/blob/master/apk/GUser.apk) and [consumer app](https://github.com/shidqi75/Github-user-app/blob/master/apk/FavGUser.apk) (consumer application to test content provider in providing data)
 
 ## Reference
 * https://www.dicoding.com/academies/14
