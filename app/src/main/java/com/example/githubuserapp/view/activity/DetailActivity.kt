@@ -94,7 +94,8 @@ class DetailActivity : AppCompatActivity() {
         user?.let {
             Picasso.get().load(it.avatar_url).into(activity_detail_image_profile)
             activity_detail_tv_name.text = it.name
-            activity_detail_tv_username.text = "@${it.login}"
+            val atUsername = "@${it.login}"
+            activity_detail_tv_username.text = atUsername
             if (it.location != null) {
                 activity_detail_ll_location.visibility = View.VISIBLE
                 activity_detail_tv_location.text = it.location

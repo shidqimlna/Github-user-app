@@ -9,4 +9,17 @@
     <string name="your_favorite_guser">Your Favorite GUser</string>
     <string name="no_data">No data</string>
     <string name="favorite_user">Favorite GUser</string>
+    <string name="background" translatable="false">background</string>
+    <string name="container" translatable="false">container</string>
+    <string name="profile_picture" translatable="false">profile picture</string>
+    <string name="company_icon" translatable="false">company icon</string>
+    <string name="location_icon" translatable="false">location icon</string>
+    <string name="link_icon" translatable="false">link icon</string>
+    <string name="email_icon" translatable="false">email icon</string>
+    <string name="image_divider" translatable="false">image divider</string>
+    <string name="favorite_icon" translatable="false">favorite icon</string>
+    <string name="alarm_icon" translatable="false">alarm icon</string>
+    <string name="setting_icon" translatable="false">setting icon</string>
+    <string name="power_icon" translatable="false">power icon</string>
+    <string name="error_icon" translatable="false">error icon</string>
 </resources>

@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:background="@drawable/activity_setting_button_bg"
+                android:contentDescription="@string/power_icon"
                 android:src="@drawable/ic_baseline_power_settings_off_24" />
 
             <ImageButton
@@ -31,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:background="@drawable/activity_setting_button_bg"
+                android:contentDescription="@string/power_icon"
                 android:src="@drawable/ic_baseline_power_settings_on_24" />
 
         </LinearLayout>

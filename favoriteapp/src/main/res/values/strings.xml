@@ -3,4 +3,12 @@
     <string name="follower">Follower</string>
     <string name="following">Following</string>
     <string name="favorite_user">Favorite GUser</string>
+    <string name="background">background</string>
+    <string name="company_icon">company icon</string>
+    <string name="location_icon">location icon</string>
+    <string name="link_icon">link icon</string>
+    <string name="email_icon">email icon</string>
+    <string name="image_divider">image divider</string>
+    <string name="profile_picture">profile picture</string>
+    <string name="container">container</string>
 </resources>

@@ -55,13 +55,12 @@ class FollowingFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mainViewModel =
-            ViewModelProvider(
+        activity?.let {
+            mainViewModel = ViewModelProvider(
                 this,
-                ViewModelProvider.AndroidViewModelFactory(activity!!.application)
-            ).get(
-                MainViewModel::class.java
-            )
+                ViewModelProvider.AndroidViewModelFactory(it.application)
+            ).get(MainViewModel::class.java)
+        }
         setData()
     }
 

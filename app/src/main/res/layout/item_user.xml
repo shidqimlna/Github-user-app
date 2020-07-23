@@ -27,6 +27,7 @@
                 android:layout_width="150dp"
                 android:layout_height="90dp"
                 android:background="@color/colorAccent"
+                android:contentDescription="@string/background"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -34,10 +35,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/item_user_container_bg"
                 android:layout_width="150dp"
                 android:layout_height="120dp"
                 android:background="@drawable/item_user_container_bg"
+                android:contentDescription="@string/container"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +51,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:background="@drawable/default_round_profile_picture"
+                android:contentDescription="@string/profile_picture"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toTopOf="@+id/item_user_tv_username"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +62,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
+                android:contentDescription="@string/profile_picture"
                 android:src="@drawable/activity_detail_image_divider"
                 app:layout_constraintBottom_toTopOf="@+id/item_user_tv_username"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,9 +79,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_user_image_bg" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

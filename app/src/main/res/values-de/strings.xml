@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GUser</string>
     <string name="follower">Anhänger</string>
     <string name="following">Folgen</string>
     <string name="error">Hoppla! etwas ist schief gelaufen.</string>

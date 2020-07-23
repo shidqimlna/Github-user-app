@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
-    tools:context=".view.activity.FavoriteActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".view.activity.FavoriteActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        app:cardElevation="8dp"
+        android:layout_marginBottom="12dp"
         android:background="#ffffff"
-        android:layout_marginBottom="12dp">
+        app:cardElevation="8dp">
 
         <TextView
-            android:gravity="center"
+            style="@style/CodeFontBold"
             android:layout_height="match_parent"
-            android:text="@string/favorite_user"
-            style="@style/CodeFontBold"/>
+            android:gravity="center"
+            android:text="@string/favorite_user" />
 
     </androidx.cardview.widget.CardView>
 

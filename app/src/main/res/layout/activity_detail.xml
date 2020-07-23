@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-
         <ImageView
             android:id="@+id/activity_detail_image_bg"
             android:layout_width="match_parent"
@@ -18,6 +17,7 @@
             android:layout_alignBottom="@+id/activity_detail_frame_image"
             android:layout_marginBottom="60dp"
             android:background="@drawable/activity_detail_profile_bg"
+            android:contentDescription="@string/background"
             android:scaleType="centerCrop" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -36,7 +36,6 @@
             android:paddingTop="80dp">
 
             <LinearLayout
-                android:id="@+id/activity_detail_container_bg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
@@ -72,6 +71,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="7"
+                        android:contentDescription="@string/company_icon"
                         android:src="@drawable/ic_baseline_business_24" />
 
                     <TextView
@@ -95,6 +95,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="7"
+                        android:contentDescription="@string/location_icon"
                         android:src="@drawable/ic_baseline_location_on_24" />
 
                     <TextView
@@ -117,6 +118,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="7"
+                        android:contentDescription="@string/link_icon"
                         android:src="@drawable/ic_baseline_link_24" />
 
                     <TextView
@@ -139,6 +141,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="7"
+                        android:contentDescription="@string/email_icon"
                         android:src="@drawable/ic_baseline_email_24" />
 
                     <TextView
@@ -154,7 +157,6 @@
                     android:visibility="gone" />
 
                 <LinearLayout
-                    android:id="@+id/activity_detail_ll_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -202,12 +204,14 @@
                 android:layout_width="155dp"
                 android:layout_height="155dp"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                android:background="@drawable/default_round_profile_picture" />
+                android:background="@drawable/default_round_profile_picture"
+                android:contentDescription="@string/profile_picture"
+                android:scaleType="centerCrop" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/image_divider"
                 android:src="@drawable/activity_detail_image_divider" />
 
         </FrameLayout>

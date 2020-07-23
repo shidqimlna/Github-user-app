@@ -10,6 +10,7 @@
         android:layout_width="115dp"
         android:layout_height="115dp"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/profile_picture"
         android:scaleType="fitXY"
         tools:srcCompat="@drawable/example_appwidget_preview" />
 

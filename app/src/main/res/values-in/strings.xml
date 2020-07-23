@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GUser</string>
     <string name="follower">Pengikut</string>
     <string name="following">Mengikuti</string>
     <string name="error">Ups! Ada yang salah</string>

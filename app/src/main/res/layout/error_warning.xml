@@ -17,6 +17,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
+            android:contentDescription="@string/error_icon"
             android:src="@drawable/ic_round_warning_24" />
 
         <TextView

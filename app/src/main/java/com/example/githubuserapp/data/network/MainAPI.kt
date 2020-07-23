@@ -8,7 +8,8 @@ class MainAPI {
     private var retrofit: Retrofit? = null
     val mainApiInterface: MainApiInterface?
         get() {
-            retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
+            retrofit = Retrofit.Builder().baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create()).build()
             return retrofit?.create(MainApiInterface::class.java)
         }
 }
