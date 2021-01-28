@@ -1,6 +1,8 @@
 # GUser
 Simple app for Dicoding's fundamental android submission 
 
+[![license](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/shidqi75/Github-user-app/blob/master/LICENSE)
+
 ## Features
 * Alarm Manager
 * CardView
@@ -21,5 +23,3 @@ Simple app for Dicoding's fundamental android submission
 
 ## Reference
 * https://www.dicoding.com/academies/14
-
-[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/shidqi75/Github-user-app/blob/master/LICENSE)
